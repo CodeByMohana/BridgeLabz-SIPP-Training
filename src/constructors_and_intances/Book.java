@@ -1,9 +1,9 @@
 package constructors_and_intances;
 
 public class Book {
-	String title;
-	String author;
-	double price;
+	private String title;
+	private String author;
+	private double price;
 	
 	//Default Constructor
 	public Book() {
