@@ -6,12 +6,12 @@ public class Patient {
     static int totalPatients = 0;
 
     // Final variable - uniquely identifies each patient
-    final int patientID;
+    private final int patientID;
 
     // Instance variables
-    String name;
-    int age;
-    String ailment;
+    private String name;
+    private int age;
+    private String ailment;
 
     // Constructor using 'this'
     public Patient(String name, int age, String ailment, int patientID) {

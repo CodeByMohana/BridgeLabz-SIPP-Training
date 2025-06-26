@@ -2,15 +2,15 @@ package this_static_final_instanceof;
 
 public class Student {
     // Static variable shared by all students
-    static String universityName = "ABC University";
-    static int totalStudents = 0;
+    private static String universityName = "ABC University";
+    private static int totalStudents = 0;
 
     // Final variable - cannot be changed
-    final int rollNumber;
+    private final int rollNumber;
 
     // Instance variables
-    String name;
-    char grade;
+    private String name;
+    private char grade;
 
     // Constructor using 'this'
     public Student(String name, int rollNumber, char grade) {
