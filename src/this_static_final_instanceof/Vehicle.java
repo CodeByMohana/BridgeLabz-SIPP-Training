@@ -2,14 +2,14 @@ package this_static_final_instanceof;
 
 public class Vehicle {
     // Static variable common for all vehicles
-    static double registrationFee = 5000.0;
+    private static double registrationFee = 5000.0;
 
     // Final variable - unique and cannot be changed
-    final String registrationNumber;
+    private final String registrationNumber;
 
     // Instance variables
-    String ownerName;
-    String vehicleType;
+    private String ownerName;
+    private String vehicleType;
 
     // Constructor using 'this'
     public Vehicle(String ownerName, String vehicleType, String registrationNumber) {

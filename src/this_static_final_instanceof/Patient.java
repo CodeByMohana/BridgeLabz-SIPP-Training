@@ -2,8 +2,8 @@ package this_static_final_instanceof;
 
 public class Patient {
     // Static variable shared among all patients
-    static String hospitalName = "City Care Hospital";
-    static int totalPatients = 0;
+    private static String hospitalName = "City Care Hospital";
+    private static int totalPatients = 0;
 
     // Final variable - uniquely identifies each patient
     private final int patientID;

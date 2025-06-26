@@ -3,7 +3,7 @@ package this_static_final_instanceof;
 public class BankAccount {
 	
     // Static variable shared across all instances
-	static String bankName = "BOB Bank";
+	private static String bankName = "BOB Bank";
     private static int totalAccounts = 0;
 
     // Final instance variable (cannot be changed once set)

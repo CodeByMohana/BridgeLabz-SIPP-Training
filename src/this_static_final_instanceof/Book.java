@@ -3,7 +3,7 @@ package this_static_final_instanceof;
 public class Book {
 	
     // Static variable shared across all instances
-	static String libraryName = "ABC Library";
+	private static String libraryName = "ABC Library";
 	
 	//Instance variables
 	private String title;
