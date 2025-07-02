@@ -30,14 +30,10 @@ class Author extends Book {
 }
 
 public class LibraryManagement {
-    public static void main(String[] args) {
-        Author author = new Author(
-            "The Silent Observer",
-            2022,
-            "Aarav Mehta",
-            "Aarav is an Indian novelist known for contemporary fiction and short stories."
-        );
+	public static void main(String[] args) {
+		Author author = new Author("The Silent Observer", 2022, "Aarav Mehta",
+				"Aarav is an Indian novelist known for contemporary fiction and short stories.");
 
-        author.displayInfo();
-    }
+		author.displayInfo();
+	}
 }
