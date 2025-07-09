@@ -75,20 +75,48 @@ public class TaskScheduler {
 
 	}
 
-//		Add remove a task by id method
-//		public void removeById(int taskId) {
-//			if (isEmpty()) {
-//				System.out.println("No tasks scheduled.");
-//				return;
-//			}
-//			TaskNode temp = head;
-//			while(temp.next.taskId != taskId && temp.next != head) {
-//				temp = temp.next;
-//			}
-//			temp.next = temp.next.next;
-//		}
-//
-//
+	public void removeById(int taskId) {
+		if (isEmpty()) {
+			System.out.println("No tasks scheduled.");
+			return;
+		}
+
+		TaskNode temp = head;
+		TaskNode prev = null;
+
+		if (head.taskId == taskId) {
+			if (head.next == head) {
+				head = null;
+				current = null;
+			} else {
+				TaskNode tail = head;
+				while (tail.next != head) {
+					tail = tail.next;
+				}
+				head = head.next;
+				tail.next = head;
+
+				if (current == temp)
+					current = head;
+			}
+			System.out.println("Task with ID " + taskId + " removed.");
+			return;
+		}
+
+		do {
+			prev = temp;
+			temp = temp.next;
+			if (temp.taskId == taskId) {
+				prev.next = temp.next;
+				if (current == temp)
+					current = prev.next;
+				System.out.println("Task with ID " + taskId + " removed.");
+				return;
+			}
+		} while (temp != head);
+
+		System.out.println("Task with ID " + taskId + " not found.");
+	}
 
 	public void viewCurrentAndMoveNext() {
 		if (isEmpty()) {
