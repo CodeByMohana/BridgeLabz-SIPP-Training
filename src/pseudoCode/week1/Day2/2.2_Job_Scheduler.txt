@@ -1,0 +1,14 @@
+CLASS Job
+    ATTRIBUTES: jobId, deadline, processingTime
+    CONSTRUCTOR(jobId, deadline, processingTime)
+        SET values
+
+PRIORITY QUEUE jobs (sorted by earliest deadline first, if tie then by shortest processing time)
+
+FUNCTION addJob(job)
+    INSERT job INTO jobs based on priority
+
+FUNCTION executeJobs()
+    WHILE jobs is NOT EMPTY
+        job = REMOVE HIGHEST PRIORITY job
+        PRINT "Executing Job: " + job.jobId

@@ -1,0 +1,15 @@
+METHOD wordCounter(paragraph)
+    CLEAN paragraph → remove punctuation
+    words = split(paragraph, " ")
+    map = new HashMap<String, Integer>()
+
+    FOR word IN words
+        word = toLowerCase(word)
+        map[word] = map.getOrDefault(word, 0) + 1
+
+    SORT map BY frequency DESC
+    PRINT map
+
+--- DEMO ---
+paragraph = "The news today is about the rise in technology trends."
+OUTPUT: the (2), about (1), in (1), is (1), news (1), rise (1), technology (1), today (1), trends (1)

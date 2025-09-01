@@ -1,0 +1,20 @@
+DATA STRUCTURE: LinkedHashMap<Integer, String> tasks
+taskIdCounter = 0
+
+METHOD addTask(description)
+    taskIdCounter++
+    tasks.put(taskIdCounter, description)
+
+METHOD removeTask(taskId)
+    tasks.remove(taskId)
+
+METHOD showTasks()
+    FOR EACH (id, task) IN tasks
+        PRINT id + " → " + task
+
+--- DEMO ---
+addTask("Check emails")       # 1
+addTask("Prepare sales report") # 2
+addTask("Call client")          # 3
+removeTask(2)
+showTasks()  # 1 → Check emails, 3 → Call client

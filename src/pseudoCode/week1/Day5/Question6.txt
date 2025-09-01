@@ -1,0 +1,15 @@
+CLASS Employee
+    ATTRIBUTES: name, dept, rating, baseSalary
+
+FUNCTION distributeBonus(employees)
+    GROUP employees BY dept → deptGroups
+
+    FOR EACH dept IN deptGroups
+        totalSalary = SUM(emp.baseSalary for emp IN deptGroups[dept])
+        bonusPool = totalSalary * 0.10
+
+        totalRatings = SUM(emp.rating for emp IN deptGroups[dept])
+
+        FOR EACH emp IN deptGroups[dept]
+            empShare = (emp.rating / totalRatings) * bonusPool
+            PRINT emp.name + " gets bonus " + empShare

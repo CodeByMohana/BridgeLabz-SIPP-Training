@@ -1,0 +1,20 @@
+CLASS Graph
+    ATTRIBUTES: adjacencyList
+
+FUNCTION addEdge(zone1, zone2)
+    ADD zone2 to adjacencyList[zone1]
+    ADD zone1 to adjacencyList[zone2]
+
+FUNCTION DFS(node, visited, riskScore)
+    MARK visited[node] = TRUE
+    CALCULATE riskScore[node] from past data
+    FOR EACH neighbor in adjacencyList[node]
+        IF visited[neighbor] == FALSE
+            CALL DFS(neighbor, visited, riskScore)
+
+FUNCTION findHighRiskZones()
+    FOR EACH zone in adjacencyList
+        IF not visited[zone]
+            DFS(zone, visited, riskScore)
+    FILTER zones with riskScore > threshold
+    PRINT "High Risk Zones: " + zones

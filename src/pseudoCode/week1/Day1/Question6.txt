@@ -1,0 +1,15 @@
+CLASS Employee
+    ATTRIBUTES: name, department
+    CONSTRUCTOR(name, department)
+        SET this.name = name
+        SET this.department = department
+
+INITIALIZE List<Employee> employees
+
+FUNCTION addEmployee(employee)
+    ADD employee INTO employees
+
+FUNCTION filterByDepartment(dept)
+    FOR EACH emp IN employees
+        IF emp.department == dept
+            PRINT emp.name + " works in " + dept

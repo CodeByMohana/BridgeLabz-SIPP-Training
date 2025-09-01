@@ -1,0 +1,13 @@
+CLASS Member
+    ATTRIBUTES: name, ID, membershipDate, expiryDate
+    CONSTRUCTOR(name, ID, membershipDate, expiryDate)
+        SET this.name = name
+        SET this.ID = ID
+        SET this.membershipDate = membershipDate
+        SET this.expiryDate = expiryDate
+
+    METHOD isMembershipValid(currentDate)
+        IF currentDate <= expiryDate
+            RETURN TRUE
+        ELSE
+            RETURN FALSE

@@ -1,0 +1,51 @@
+ABSTRACT CLASS TaxCalculator
+    ABSTRACT METHOD calculate(price)
+
+CLASS FoodTax EXTENDS TaxCalculator
+    METHOD calculate(price)
+        RETURN price * 0.05
+
+CLASS BeverageTax EXTENDS TaxCalculator
+    METHOD calculate(price)
+        RETURN price * 0.12
+
+CLASS ImportedTax EXTENDS TaxCalculator
+    METHOD calculate(price)
+        RETURN price * 0.05 + customsDuty
+
+INTERFACE DiscountPolicy
+    METHOD apply(amount)
+
+CLASS NoDiscount IMPLEMENTS DiscountPolicy
+    METHOD apply(amount) RETURN amount
+
+CLASS FlatDiscount IMPLEMENTS DiscountPolicy
+    ATTRIBUTE flatAmount
+    METHOD apply(amount) RETURN amount - flatAmount
+
+CLASS PercentageDiscount IMPLEMENTS DiscountPolicy
+    ATTRIBUTE percent
+    METHOD apply(amount) RETURN amount - (amount * percent/100)
+
+CLASS BillItem
+    ATTRIBUTES: name, price, TaxCalculator tax
+    METHOD getFinalPrice()
+        RETURN price + tax.calculate(price)
+
+CLASS Bill
+    ATTRIBUTES: List<BillItem> items, DiscountPolicy discount
+    METHOD calculateTotal()
+        subtotal = 0
+        FOR EACH item IN items
+            subtotal += item.getFinalPrice()
+        RETURN discount.apply(subtotal)
+
+--- DEMO ---
+items = [
+    BillItem("Paneer Tikka", 200, new FoodTax()),
+    BillItem("Coke", 50, new BeverageTax()),
+    BillItem("Imported Cheese", 500, new ImportedTax())
+]
+
+bill = Bill(items, new PercentageDiscount(10))
+PRINT bill.calculateTotal()

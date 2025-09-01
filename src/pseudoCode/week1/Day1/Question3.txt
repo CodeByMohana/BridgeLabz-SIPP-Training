@@ -1,0 +1,12 @@
+INITIALIZE Stack undoStack
+
+FUNCTION typeText(text)
+    PUSH text INTO undoStack
+    PRINT "Typed: " + text
+
+FUNCTION undo()
+    IF undoStack is NOT EMPTY
+        lastText = POP from undoStack
+        PRINT "Undo: Removed " + lastText
+    ELSE
+        PRINT "Nothing to undo"

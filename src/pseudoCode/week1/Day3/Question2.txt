@@ -1,0 +1,25 @@
+INTERFACE Searchable
+    METHOD search(keyword)
+
+INTERFACE Printable
+    METHOD print()
+
+CLASS LabReport IMPLEMENTS Searchable, Printable
+    ATTRIBUTES: reportId, content
+    METHOD search(keyword)
+        IF keyword IN content
+            RETURN TRUE
+        ELSE RETURN FALSE
+    METHOD print()
+        PRINT "Lab Report ID: " + reportId
+        PRINT content
+
+CLASS Prescription IMPLEMENTS Searchable, Printable
+    ATTRIBUTES: prescriptionId, medicines
+    METHOD search(keyword)
+        IF keyword IN medicines
+            RETURN TRUE
+        ELSE RETURN FALSE
+    METHOD print()
+        PRINT "Prescription ID: " + prescriptionId
+        PRINT medicines

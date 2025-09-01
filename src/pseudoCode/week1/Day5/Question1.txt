@@ -1,0 +1,46 @@
+INTERFACE DiagnosisStrategy
+    METHOD diagnose(symptoms: List<String>) RETURNS List<String>
+
+CLASS RuleBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        IF symptoms CONTAINS ["fever", "cough", "fatigue"]
+            RETURN ["Flu", "COVID-19"]
+        ELSE RETURN ["Unknown"]
+
+CLASS AIBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        USE trainedModel TO PREDICT(symptoms)
+        RETURN predictions
+
+CLASS ProbabilityBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        CALCULATE probability scores BASED ON dataset
+        RETURN top probable diseases
+
+CLASS GeneticPatternDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        MATCH genetic markers WITH known diseases
+        RETURN matched diseases
+
+CLASS DiagnosisContext
+    ATTRIBUTE strategy: DiagnosisStrategy
+
+    METHOD setStrategy(strategy)
+        this.strategy = strategy
+
+    METHOD executeDiagnosis(symptoms)
+        RETURN strategy.diagnose(symptoms)
+
+--- DEMO FLOW ---
+patient1Symptoms = ["fever", "cough", "fatigue"]
+context = DiagnosisContext()
+context.setStrategy(new RuleBasedDiagnosis())
+PRINT context.executeDiagnosis(patient1Symptoms)
+
+patient2Symptoms = ["headache", "dizziness", "nausea"]
+context.setStrategy(new AIBasedDiagnosis())
+PRINT context.executeDiagnosis(patient2Symptoms)
+
+# Adding new algorithm without touching old code:
+context.setStrategy(new GeneticPatternDiagnosis())
+PRINT context.executeDiagnosis(["geneX", "geneY"])

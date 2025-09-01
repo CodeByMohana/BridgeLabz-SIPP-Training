@@ -1,0 +1,30 @@
+CLASS Account
+    ATTRIBUTES: accountNumber, balance
+    CONSTRUCTOR(accountNumber, balance)
+        SET this.accountNumber = accountNumber
+        SET this.balance = balance
+
+    METHOD withdraw(amount)
+        IF balance >= amount
+            balance = balance - amount
+            PRINT "Withdrawn: " + amount
+        ELSE
+            PRINT "Insufficient balance"
+
+CLASS SavingAccount EXTENDS Account
+    ATTRIBUTE: minBalance = 500
+    METHOD withdraw(amount)
+        IF balance - amount >= minBalance
+            balance = balance - amount
+            PRINT "Withdrawn from Saving: " + amount
+        ELSE
+            PRINT "Cannot withdraw, min balance required"
+
+CLASS CurrentAccount EXTENDS Account
+    ATTRIBUTE: overdraftLimit = 1000
+    METHOD withdraw(amount)
+        IF balance + overdraftLimit >= amount
+            balance = balance - amount
+            PRINT "Withdrawn from Current: " + amount
+        ELSE
+            PRINT "Overdraft limit exceeded"

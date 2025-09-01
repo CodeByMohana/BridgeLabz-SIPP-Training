@@ -1,0 +1,17 @@
+CLASS Doctor
+    ATTRIBUTES: name, specialization
+    CONSTRUCTOR(name, specialization)
+        SET values
+
+MAP<String, List<Doctor>> hospitalDepartments
+
+FUNCTION addDoctorToDepartment(dept, doctor)
+    IF dept NOT IN hospitalDepartments
+        hospitalDepartments[dept] = new List<Doctor>()
+    ADD doctor TO hospitalDepartments[dept]
+
+FUNCTION filterDoctorsBySpecialization(spec)
+    FOR EACH dept IN hospitalDepartments
+        FOR EACH doctor IN hospitalDepartments[dept]
+            IF doctor.specialization == spec
+                PRINT doctor.name + " in Department: " + dept

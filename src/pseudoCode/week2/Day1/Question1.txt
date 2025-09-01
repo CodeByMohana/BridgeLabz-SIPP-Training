@@ -1,0 +1,29 @@
+CLASS User
+    ATTRIBUTES: username, password
+    METHOD login()
+        PRINT "Checking basic credentials..."
+
+CLASS Student EXTENDS User
+    ATTRIBUTE: enrolledCourses
+    METHOD login()
+        IF validCredentials(username, password) AND enrolledCourses NOT EMPTY
+            PRINT "Welcome Student: " + username
+            SHOW availableExams()
+        ELSE
+            PRINT "Access Denied"
+
+CLASS Admin EXTENDS User
+    ATTRIBUTE: adminPrivileges
+    METHOD login()
+        IF validCredentials(username, password) AND adminPrivileges == TRUE
+            PRINT "Welcome Admin: " + username
+            SHOW examManagementTools()
+        ELSE
+            PRINT "Access Denied"
+
+--- DEMO ---
+s = Student("john123", "pass", ["Maths"])
+s.login()   # Valid student
+
+a = Admin("admin1", "pass", TRUE)
+a.login()   # Valid admin

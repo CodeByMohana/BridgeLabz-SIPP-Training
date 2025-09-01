@@ -1,0 +1,27 @@
+ABSTRACT CLASS Crop
+    ATTRIBUTES: name
+    CONSTRUCTOR(name)
+        SET this.name = name
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvest()
+
+CLASS Rice EXTENDS Crop
+    METHOD waterRequirement()
+        PRINT "Rice needs 5 liters/day"
+    METHOD harvest()
+        PRINT "Rice harvested in 120 days"
+
+CLASS Wheat EXTENDS Crop
+    METHOD waterRequirement()
+        PRINT "Wheat needs 3 liters/day"
+    METHOD harvest()
+        PRINT "Wheat harvested in 90 days"
+
+FUNCTION simulateFarming()
+    crop1 = new Rice("Basmati")
+    crop1.waterRequirement()
+    crop1.harvest()
+
+    crop2 = new Wheat("Durum")
+    crop2.waterRequirement()
+    crop2.harvest()

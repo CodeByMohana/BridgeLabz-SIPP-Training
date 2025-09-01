@@ -1,0 +1,18 @@
+GENERIC CLASS Transaction<T>
+    ATTRIBUTES: id, amount, method (T)
+    CONSTRUCTOR(id, amount, method)
+        SET values
+
+CLASS UPI
+    ATTRIBUTES: upiId
+
+CLASS Card
+    ATTRIBUTES: cardNumber
+
+CLASS NetBanking
+    ATTRIBUTES: bankName, accountNo
+
+FUNCTION processPayment(transaction)
+    PRINT "Transaction ID: " + transaction.id
+    PRINT "Amount: " + transaction.amount
+    PRINT "Method: " + transaction.method

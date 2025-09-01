@@ -1,0 +1,18 @@
+FUNCTION solveMaze(maze, x, y, solution)
+    IF x,y is goal
+        solution[x][y] = 1
+        RETURN TRUE
+
+    IF isSafe(maze, x, y) == TRUE
+        solution[x][y] = 1
+        
+        IF solveMaze(maze, x+1, y, solution) == TRUE
+            RETURN TRUE
+        IF solveMaze(maze, x, y+1, solution) == TRUE
+            RETURN TRUE
+
+        solution[x][y] = 0   // BACKTRACK
+        RETURN FALSE
+
+FUNCTION isSafe(maze, x, y)
+    RETURN TRUE if maze[x][y] == 1 and inside grid

@@ -1,0 +1,9 @@
+CLASS Book
+    ATTRIBUTES: title, year, rating
+
+LIST<Book> books
+
+FUNCTION filterBooks()
+    result = FILTER books WHERE book.year > 2015 AND book.rating > 4.5
+    FOR EACH b IN result
+        PRINT b.title + " (" + b.year + ") Rating: " + b.rating

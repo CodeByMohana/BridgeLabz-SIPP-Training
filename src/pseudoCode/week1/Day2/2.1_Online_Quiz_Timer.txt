@@ -1,0 +1,10 @@
+INITIALIZE circularArray[questionsCount]
+SET currentIndex = 0
+
+FUNCTION startQuizTimer()
+    WHILE currentIndex < questionsCount
+        PRINT "Time started for Question " + (currentIndex+1)
+        WAIT 30 seconds
+        IF 25 seconds passed
+            PRINT "Warning: 5 seconds left!"
+        currentIndex = (currentIndex + 1) % questionsCount

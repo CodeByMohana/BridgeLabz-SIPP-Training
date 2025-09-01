@@ -1,0 +1,9 @@
+DATA STRUCTURE:
+Map<Zone, Map<Day, List<Reading>>> energyData
+
+FUNCTION analyzePeaks()
+    FOR EACH zone IN energyData
+        FOR EACH day IN energyData[zone]
+            readings = energyData[zone][day]
+            peak = MAX(readings)
+            PRINT zone + " " + day + " → Peak Load = " + peak

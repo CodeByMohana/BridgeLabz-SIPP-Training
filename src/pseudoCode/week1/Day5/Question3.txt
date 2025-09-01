@@ -1,0 +1,20 @@
+QUEUE servers = [S1, S2, S3]
+
+FUNCTION processRequests(requests)
+    FOR EACH request IN requests
+        server = servers.dequeue()
+        PRINT request + " → " + server
+        servers.enqueue(server)
+
+FUNCTION addServer(newServer)
+    servers.enqueue(newServer)
+
+FUNCTION removeServer(failedServer)
+    REMOVE failedServer FROM servers
+
+--- DEMO ---
+processRequests([R1, R2, R3])
+addServer(S4)
+processRequests([R4, R5])
+removeServer(S2)
+processRequests([R6, R7, R8])

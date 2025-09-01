@@ -1,0 +1,16 @@
+CLASS Item
+    ATTRIBUTES: name, price
+    CONSTRUCTOR(name, price)
+        SET this.name = name
+        SET this.price = price
+
+LIST<Item> cart
+
+FUNCTION addItemToCart(item)
+    ADD item TO cart
+
+GENERIC FUNCTION calculateTotalPrice(List<T extends Item>)
+    total = 0
+    FOR EACH item IN list
+        total = total + item.price
+    RETURN total

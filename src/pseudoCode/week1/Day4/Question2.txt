@@ -1,0 +1,27 @@
+ABSTRACT CLASS Vehicle
+    ATTRIBUTES: vehicleId, brand
+    ABSTRACT METHOD rent()
+
+INTERFACE Rentable
+    METHOD rentForDays(days)
+
+CLASS Car EXTENDS Vehicle IMPLEMENTS Rentable
+    METHOD rent()
+        PRINT "Car rented"
+    METHOD rentForDays(days)
+        PRINT "Car rented for " + days + " days"
+
+CLASS Bike EXTENDS Vehicle IMPLEMENTS Rentable
+    METHOD rent()
+        PRINT "Bike rented"
+    METHOD rentForDays(days)
+        PRINT "Bike rented for " + days + " days"
+
+FACTORY CLASS VehicleFactory
+    METHOD getVehicle(type)
+        IF type == "car"
+            RETURN new Car()
+        ELSE IF type == "bike"
+            RETURN new Bike()
+        ELSE
+            RETURN null

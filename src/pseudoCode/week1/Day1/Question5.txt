@@ -1,0 +1,13 @@
+INITIALIZE HashMap<String, Integer> scores
+
+FUNCTION addStudentScore(name, score)
+    scores[name] = score
+
+FUNCTION findTopScorer()
+    maxScore = -1
+    topStudent = ""
+    FOR EACH entry IN scores
+        IF entry.score > maxScore
+            maxScore = entry.score
+            topStudent = entry.name
+    PRINT "Top Scorer: " + topStudent + " with " + maxScore

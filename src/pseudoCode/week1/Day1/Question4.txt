@@ -1,0 +1,18 @@
+INITIALIZE Queue normalQueue
+INITIALIZE Queue emergencyQueue
+
+FUNCTION addCustomer(name, type)
+    IF type == "emergency"
+        ENQUEUE name INTO emergencyQueue
+    ELSE
+        ENQUEUE name INTO normalQueue
+
+FUNCTION serveCustomer()
+    IF emergencyQueue NOT EMPTY
+        customer = DEQUEUE emergencyQueue
+        PRINT "Serving Emergency Customer: " + customer
+    ELSE IF normalQueue NOT EMPTY
+        customer = DEQUEUE normalQueue
+        PRINT "Serving Normal Customer: " + customer
+    ELSE
+        PRINT "No customers waiting"

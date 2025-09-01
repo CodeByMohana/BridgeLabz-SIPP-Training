@@ -1,0 +1,28 @@
+CLASS Node
+    ATTRIBUTES: stopName, next
+
+CLASS BusRoute
+    ATTRIBUTE: head
+
+    METHOD insertAfter(existingStop, newStop)
+        FIND node with stopName = existingStop
+        CREATE newNode(newStop)
+        newNode.next = node.next
+        node.next = newNode
+
+    METHOD delete(stopName)
+        FIND node BEFORE stopName
+        node.next = node.next.next
+
+    METHOD search(stopName)
+        TRAVERSE linked list
+        IF found RETURN TRUE ELSE FALSE
+
+    METHOD display()
+        PRINT all stops in order
+
+--- DEMO ---
+route = Depot → Main Street → City Mall → Hospital → Airport
+route.insertAfter("City Mall", "University")
+route.delete("Hospital")
+route.search("Airport")  # TRUE

@@ -1,0 +1,21 @@
+MATRIX attendance[students][days]
+
+METHOD markAttendance(studentId, day, status)
+    attendance[studentId][day] = status
+
+METHOD updateAttendance(studentId, day, newStatus)
+    attendance[studentId][day] = newStatus
+
+METHOD generateReport(studentId)
+    count = 0
+    FOR day IN attendance[studentId]
+        IF day == "P"
+            count++
+    PRINT "Student " + studentId + " Present: " + count + " days"
+
+--- DEMO ---
+markAttendance(1, 1, "P")
+markAttendance(1, 2, "P")
+markAttendance(1, 3, "A")
+updateAttendance(1, 3, "P")
+generateReport(1)  # Student 1 present 26 days

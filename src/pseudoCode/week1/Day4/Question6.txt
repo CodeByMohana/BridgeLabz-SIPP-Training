@@ -1,0 +1,13 @@
+CLASS Transaction
+    ATTRIBUTES: id, merchant, amount, month
+
+LIST<Transaction> transactions
+
+FUNCTION generateReport()
+    grouped = GROUP transactions BY merchant, THEN BY month
+    FOR EACH merchantGroup IN grouped
+        PRINT "Merchant: " + merchantGroup.key
+        FOR EACH monthGroup IN merchantGroup
+            total = SUM of amounts in monthGroup
+            count = SIZE of monthGroup
+            PRINT "Month: " + monthGroup.key + " Total: " + total + " Transactions: " + count

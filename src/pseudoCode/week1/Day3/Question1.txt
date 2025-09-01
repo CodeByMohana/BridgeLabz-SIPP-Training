@@ -1,0 +1,22 @@
+CLASS Customer
+    ATTRIBUTES: name, address
+
+CLASS Restaurant
+    ATTRIBUTES: name, menu
+
+CLASS DeliveryBoy
+    ATTRIBUTES: name, phoneNumber
+
+CLASS Order
+    ATTRIBUTES: customer, restaurant, deliveryBoy, items
+    CONSTRUCTOR(customer, restaurant, deliveryBoy, items)
+        SET this.customer = customer
+        SET this.restaurant = restaurant
+        SET this.deliveryBoy = deliveryBoy
+        SET this.items = items
+
+    METHOD displayOrder()
+        PRINT "Customer: " + customer.name
+        PRINT "Restaurant: " + restaurant.name
+        PRINT "Delivery Boy: " + deliveryBoy.name
+        PRINT "Items: " + items

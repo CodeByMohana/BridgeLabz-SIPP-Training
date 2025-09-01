@@ -1,0 +1,17 @@
+INITIALIZE HashMap<patientId, Patient> records
+
+CLASS Patient
+    ATTRIBUTES: id, name, age, disease
+
+FUNCTION addPatient(patient)
+    records[patient.id] = patient
+
+FUNCTION getPatient(id)
+    RETURN records[id]
+
+FUNCTION updatePatient(id, newData)
+    IF id IN records
+        records[id] = newData
+
+FUNCTION deletePatient(id)
+    REMOVE records[id]

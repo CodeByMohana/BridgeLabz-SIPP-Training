@@ -1,0 +1,18 @@
+CLASS Course
+    ATTRIBUTES: courseId, name
+
+CLASS Student
+    ATTRIBUTES: studentId, name
+
+MAP<Course, List<Student>> courseRegistry
+
+FUNCTION registerStudent(course, student)
+    IF course NOT IN courseRegistry
+        courseRegistry[course] = new List<Student>()
+    ADD student to courseRegistry[course]
+
+FUNCTION displayStudents()
+    FOR EACH course IN courseRegistry
+        PRINT "Course: " + course.name
+        FOR EACH student IN courseRegistry[course]
+            PRINT student.name

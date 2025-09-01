@@ -1,0 +1,28 @@
+CLASS Flight
+    ATTRIBUTES: flightNo, price, duration
+
+CUSTOM COMPARATOR compare(f1, f2)
+    IF f1.price < f2.price RETURN -1
+    ELSE IF f1.price > f2.price RETURN 1
+    ELSE
+        IF f1.duration < f2.duration RETURN -1
+        ELSE RETURN 1
+
+FUNCTION mergeSort(flights, comparator)
+    IF size <= 1 RETURN flights
+    SPLIT flights into left, right
+    left = mergeSort(left, comparator)
+    right = mergeSort(right, comparator)
+    RETURN merge(left, right, comparator)
+
+FUNCTION merge(left, right, comparator)
+    INITIALIZE result[]
+    WHILE left and right not empty
+        IF comparator(left[0], right[0]) <= 0
+            ADD left[0] to result
+            REMOVE left[0]
+        ELSE
+            ADD right[0] to result
+            REMOVE right[0]
+    APPEND remaining
+    RETURN result
